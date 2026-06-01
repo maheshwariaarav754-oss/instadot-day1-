@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopDash — E-Commerce Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <div class="logo">
+            <h1>ShopDash</h1>
+        </div>
+        <nav class="nav" id="mainNav">
+            <a href="#" class="active" data-tab="dashboard">Dashboard</a>
+            <a href="#" data-tab="products">Products</a>
+            <a href="#" data-tab="orders">Orders</a>
+            <a href="#" data-tab="customers">Customers</a>
+            <a href="#" data-tab="analytics">Analytics</a>
+        </nav>
+        <div class="user-badge">
+            <span class="badge-dot">3</span>
+            <div class="avatar">AM</div>
+        </div>
+    </div>
+</header>
+
+<main class="dashboard">
+
+    <!-- ========= TAB: Dashboard ========= -->
+    <section id="tab-dashboard" class="tab-content active">
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon blue">$</div>
+                <div>
+                    <h3>Total Revenue</h3>
+                    <p class="kpi-value" id="kpiRevenue">$48,250</p>
+                    <span class="kpi-up">+12.5%</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon purple">&#9733;</div>
+                <div>
+                    <h3>Total Orders</h3>
+                    <p class="kpi-value" id="kpiOrders">1,482</p>
+                    <span class="kpi-up">+8.2%</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon green">&#9783;</div>
+                <div>
+                    <h3>Active Customers</h3>
+                    <p class="kpi-value" id="kpiCustomers">3,251</p>
+                    <span class="kpi-up">+5.7%</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon orange">&#8593;</div>
+                <div>
+                    <h3>Growth Rate</h3>
+                    <p class="kpi-value" id="kpiGrowth">18.3%</p>
+                    <span class="kpi-up">+2.4%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <section class="card">
+                <div class="card-head">
+                    <h2>Top Products</h2>
+                    <a href="#" class="link" data-tab-link="products">View All</a>
+                </div>
+                <div class="product-list" id="topProducts"></div>
+            </section>
+            <section class="card">
+                <div class="card-head">
+                    <h2>Recent Orders</h2>
+                    <a href="#" class="link" data-tab-link="orders">View All</a>
+                </div>
+                <table class="orders" id="recentOrders">
+                    <thead>
+                        <tr><th>Order</th><th>Customer</th><th>Status</th><th>Amount</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </div>
+
+        <section class="profile-section">
+            <div class="profile-card">
+                <div class="profile-avatar">AM</div>
+                <div class="profile-info">
+                    <h2>Aarav Maheshwari</h2>
+                    <p>Java Full Stack Intern</p>
+                    <p class="profile-company">Insta Dot Analytics</p>
+                </div>
+                <div class="profile-stats">
+                    <div><strong>48</strong><span>Projects</span></div>
+                    <div><strong>12</strong><span>Clients</span></div>
+                    <div><strong>4.9</strong><span>Rating</span></div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- ========= TAB: Products ========= -->
+    <section id="tab-products" class="tab-content">
+        <div class="card-head" style="margin-bottom:1.5rem">
+            <h2>All Products</h2>
+            <div class="toolbar">
+                <input type="text" id="productSearch" placeholder="Search products..." class="search-input">
+                <select id="productSort" class="sort-select">
+                    <option value="name">Sort by Name</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="sold">Most Sold</option>
+                </select>
+            </div>
+        </div>
+        <div class="product-list full" id="allProducts"></div>
+    </section>
+
+    <!-- ========= TAB: Orders ========= -->
+    <section id="tab-orders" class="tab-content">
+        <div class="card-head" style="margin-bottom:1.5rem">
+            <h2>All Orders</h2>
+            <div class="toolbar">
+                <select id="orderFilter" class="sort-select">
+                    <option value="all">All Statuses</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Processing">Processing</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+        </div>
+        <table class="orders full-width" id="allOrders">
+            <thead>
+                <tr><th>Order</th><th>Customer</th><th>Status</th><th>Amount</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <!-- ========= TAB: Customers ========= -->
+    <section id="tab-customers" class="tab-content">
+        <div class="card-head" style="margin-bottom:1.5rem">
+            <h2>Customers</h2>
+        </div>
+        <table class="orders full-width" id="customerTable">
+            <thead>
+                <tr><th>Name</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Since</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <!-- ========= TAB: Analytics ========= -->
+    <section id="tab-analytics" class="tab-content">
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon blue">$</div>
+                <div>
+                    <h3>Revenue This Month</h3>
+                    <p class="kpi-value">$12,430</p>
+                    <span class="kpi-up">+18.3%</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon purple">&#9733;</div>
+                <div>
+                    <h3>Avg Order Value</h3>
+                    <p class="kpi-value">$94.50</p>
+                    <span class="kpi-up">+4.1%</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon green">&#9783;</div>
+                <div>
+                    <h3>Conversion Rate</h3>
+                    <p class="kpi-value">3.24%</p>
+                    <span class="kpi-up">+0.8%</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon orange">&#8593;</div>
+                <div>
+                    <h3>Returning Customers</h3>
+                    <p class="kpi-value">68.5%</p>
+                    <span class="kpi-up">+5.2%</span>
+                </div>
+            </div>
+        </div>
+        <div class="two-col">
+            <section class="card">
+                <div class="card-head"><h2>Monthly Revenue</h2></div>
+                <div class="chart-bars" id="revenueChart"></div>
+            </section>
+            <section class="card">
+                <div class="card-head"><h2>Category Breakdown</h2></div>
+                <div class="chart-legend" id="categoryChart"></div>
+            </section>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>&copy; 2026 ShopDash &mdash; Insta Dot Analytics. Built with HTML5 &amp; CSS3 &amp; JavaScript.</p>
+</footer>
+
+<script>
+// ======== DATA ========
+
+const products = [
+    { id: 1, name: 'Wireless Headphones Pro', category: 'Electronics', price: 129.99, sold: 2845 },
+    { id: 2, name: 'Smart Fitness Band', category: 'Wearables', price: 89.99, sold: 2120 },
+    { id: 3, name: 'Portable Charger 10k', category: 'Electronics', price: 39.99, sold: 1876 },
+    { id: 4, name: 'Bluetooth Speaker', category: 'Electronics', price: 59.99, sold: 1543 },
+    { id: 5, name: 'Noise Cancelling Earbuds', category: 'Audio', price: 79.99, sold: 1320 },
+    { id: 6, name: 'Laptop Stand Adjustable', category: 'Accessories', price: 34.99, sold: 1156 },
+    { id: 7, name: 'Ergonomic Mouse Pad', category: 'Accessories', price: 19.99, sold: 982 },
+    { id: 8, name: 'USB-C Hub 7-in-1', category: 'Electronics', price: 44.99, sold: 876 },
+    { id: 9, name: 'Mechanical Keyboard', category: 'Accessories', price: 109.99, sold: 743 },
+    { id: 10, name: 'Webcam 4K Ultra HD', category: 'Electronics', price: 149.99, sold: 621 },
+];
+
+const orders = [
+    { id: 1284, customer: 'Emma Wilson', status: 'Delivered', amount: 79.99, date: '2026-05-28' },
+    { id: 1283, customer: 'James Chen', status: 'Shipped', amount: 249.00, date: '2026-05-27' },
+    { id: 1282, customer: 'Sophia Patel', status: 'Processing', amount: 34.50, date: '2026-05-27' },
+    { id: 1281, customer: 'Liam Garcia', status: 'Delivered', amount: 45.99, date: '2026-05-26' },
+    { id: 1280, customer: 'Olivia Brown', status: 'Cancelled', amount: 129.00, date: '2026-05-26' },
+    { id: 1279, customer: 'Noah Kim', status: 'Delivered', amount: 199.99, date: '2026-05-25' },
+    { id: 1278, customer: 'Ava Johnson', status: 'Shipped', amount: 59.99, date: '2026-05-25' },
+    { id: 1277, customer: 'Ethan Davis', status: 'Processing', amount: 89.99, date: '2026-05-24' },
+    { id: 1276, customer: 'Mia Martinez', status: 'Delivered', amount: 149.99, date: '2026-05-24' },
+    { id: 1275, customer: 'William Taylor', status: 'Shipped', amount: 44.99, date: '2026-05-23' },
+    { id: 1274, customer: 'Isabella Anderson', status: 'Delivered', amount: 299.99, date: '2026-05-23' },
+    { id: 1273, customer: 'Lucas Thomas', status: 'Cancelled', amount: 24.99, date: '2026-05-22' },
+];
+
+const customers = [
+    { name: 'Emma Wilson', email: 'emma.w@email.com', orders: 12, spent: 1249.50, since: '2024-03' },
+    { name: 'James Chen', email: 'james.c@email.com', orders: 8, spent: 876.00, since: '2024-06' },
+    { name: 'Sophia Patel', email: 'sophia.p@email.com', orders: 15, spent: 2100.00, since: '2023-11' },
+    { name: 'Liam Garcia', email: 'liam.g@email.com', orders: 5, spent: 345.75, since: '2025-01' },
+    { name: 'Olivia Brown', email: 'olivia.b@email.com', orders: 20, spent: 3100.00, since: '2023-08' },
+    { name: 'Noah Kim', email: 'noah.k@email.com', orders: 3, spent: 199.99, since: '2025-04' },
+    { name: 'Ava Johnson', email: 'ava.j@email.com', orders: 7, spent: 620.00, since: '2024-09' },
+    { name: 'Ethan Davis', email: 'ethan.d@email.com', orders: 10, spent: 1150.00, since: '2024-02' },
+];
+
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const revenueData = [12430, 11200, 13800, 10500, 14200, 12800, 9500, 11000, 13500, 14100, 15200, 16400];
+
+const categories = [
+    { name: 'Electronics', count: 4, pct: 40 },
+    { name: 'Accessories', count: 3, pct: 30 },
+    { name: 'Audio', count: 1, pct: 10 },
+    { name: 'Wearables', count: 1, pct: 10 },
+    { name: 'Other', count: 1, pct: 10 },
+];
+
+// ======== HELPERS ========
+
+const statusColor = {
+    'Delivered': 'green', 'Shipped': 'blue', 'Processing': 'yellow', 'Cancelled': 'red'
+};
+
+function renderProductRow(p) {
+    return `<div class="product-row">
+        <span class="rank">${p.id}</span>
+        <div>
+            <strong>${p.name}</strong>
+            <p>${p.category} &middot; ${p.sold.toLocaleString()} units sold</p>
+        </div>
+        <span class="price">$${p.price.toFixed(2)}</span>
+    </div>`;
+}
+
+function renderOrderRow(o) {
+    const cls = statusColor[o.status] || 'green';
+    return `<tr><td>#${o.id}</td><td>${o.customer}</td><td><span class="tag ${cls}">${o.status}</span></td><td>$${o.amount.toFixed(2)}</td></tr>`;
+}
+
+function renderCustomerRow(c) {
+    return `<tr><td><strong>${c.name}</strong></td><td>${c.email}</td><td>${c.orders}</td><td>$${c.spent.toFixed(2)}</td><td>${c.since}</td></tr>`;
+}
+
+// ======== DASHBOARD TAB ========
+
+function loadDashboard() {
+    const top4 = products.slice(0, 4);
+    document.getElementById('topProducts').innerHTML = top4.map(renderProductRow).join('');
+
+    const recent5 = orders.slice(0, 5);
+    document.querySelector('#recentOrders tbody').innerHTML = recent5.map(renderOrderRow).join('');
+}
+
+// ======== PRODUCTS TAB ========
+
+function loadProducts() {
+    const q = (document.getElementById('productSearch').value || '').toLowerCase();
+    const sort = document.getElementById('productSort').value;
+
+    let filtered = products.filter(p => p.name.toLowerCase().includes(q));
+
+    switch (sort) {
+        case 'name': filtered.sort((a, b) => a.name.localeCompare(b.name)); break;
+        case 'price-asc': filtered.sort((a, b) => a.price - b.price); break;
+        case 'price-desc': filtered.sort((a, b) => b.price - a.price); break;
+        case 'sold': filtered.sort((a, b) => b.sold - a.sold); break;
+    }
+
+    document.getElementById('allProducts').innerHTML = filtered.map(renderProductRow).join('');
+}
+
+// ======== ORDERS TAB ========
+
+function loadOrders() {
+    const filter = document.getElementById('orderFilter').value;
+    const filtered = filter === 'all' ? orders : orders.filter(o => o.status === filter);
+    document.querySelector('#allOrders tbody').innerHTML = filtered.map(renderOrderRow).join('');
+}
+
+// ======== CUSTOMERS TAB ========
+
+function loadCustomers() {
+    document.querySelector('#customerTable tbody').innerHTML = customers.map(renderCustomerRow).join('');
+}
+
+// ======== ANALYTICS TAB ========
+
+function loadAnalytics() {
+    const maxRev = Math.max(...revenueData);
+    document.getElementById('revenueChart').innerHTML = months.map((m, i) => {
+        const h = (revenueData[i] / maxRev) * 150;
+        return `<div class="bar-wrap"><div class="bar" style="height:${h}px" data-val="$${(revenueData[i]/1000).toFixed(1)}k"></div><span>${m}</span></div>`;
+    }).join('');
+
+    const chartColors = ['#3b82f6','#8b5cf6','#10b981','#f59e0b','#ef4444'];
+    document.getElementById('categoryChart').innerHTML = categories.map((c, i) =>
+        `<div class="legend-row"><span class="legend-dot" style="background:${chartColors[i]}"></span><span>${c.name}</span><span class="legend-val">${c.pct}%</span></div>`
+    ).join('');
+}
+
+// ======== TAB SWITCHING ========
+
+const navLinks = document.querySelectorAll('#mainNav a');
+const tabContents = document.querySelectorAll('.tab-content');
+
+function switchTab(tabId) {
+    navLinks.forEach(l => l.classList.toggle('active', l.dataset.tab === tabId));
+    tabContents.forEach(tc => tc.classList.toggle('active', tc.id === 'tab-' + tabId));
+
+    switch (tabId) {
+        case 'products': loadProducts(); break;
+        case 'orders': loadOrders(); break;
+        case 'customers': loadCustomers(); break;
+        case 'analytics': loadAnalytics(); break;
+    }
+}
+
+navLinks.forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    switchTab(a.dataset.tab);
+}));
+
+document.querySelectorAll('[data-tab-link]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    switchTab(a.dataset.tabLink);
+}));
+
+document.getElementById('productSearch').addEventListener('input', loadProducts);
+document.getElementById('productSort').addEventListener('change', loadProducts);
+document.getElementById('orderFilter').addEventListener('change', loadOrders);
+
+// ======== INIT ========
+
+loadDashboard();
+</script>
+
+</body>
+</html>
